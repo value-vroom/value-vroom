@@ -8,8 +8,6 @@ WORKDIR /app
 
 RUN npm install
 
-ENV BASE_URL=https://value-vroom-api.gredal.dev
-
 RUN npm run openapi
 
 RUN npx expo export:web

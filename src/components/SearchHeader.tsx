@@ -44,7 +44,7 @@ export function SearchHeader() {
     };
 
     return (
-        <Animated.View className="w-full bg-gray-200 dark:bg-gray-700 rounded-b-3xl" style={{ paddingBottom: drawerAnim }}>
+        <Animated.View className="w-full bg-gray-200 dark:bg-gray-700 rounded-b-3xl pt-1" style={{ paddingBottom: drawerAnim }}>
             <View className="z-10 w-full bg-gray-200 rounded-b-3xl flex-col justify-center pb-6 space-y-4">
                 <Logo />
                 <View className="flex-row mx-4 h-10">

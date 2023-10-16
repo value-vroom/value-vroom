@@ -9,7 +9,7 @@ export function HomeScreen() {
     return (
         <>
             <SafeAreaView className="bg-gray-200 dark:bg-gray-700"/>
-            <View className="flex-1 flex-col pt-1">
+            <View className="flex-1 flex-col">
                 <SearchHeader />
                 <CarList />
             </View>
