@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { getPrimaryColor } from '../utility/colors';
+import { getPrimaryColor } from '../utility';
 
 export function FilterButton({onPress} : {onPress: () => void}) {
     return (

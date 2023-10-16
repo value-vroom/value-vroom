@@ -3,7 +3,7 @@ import { View, Text, TextInput, ScrollView, ActivityIndicator } from 'react-nati
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { useGetCarsCarsGet } from '../api/apiComponents';
 import { CarCard } from './CarCard';
-import { getPrimaryColor } from '../utility/colors';
+import { getPrimaryColor } from '../utility';
 
 export function CarList() {
     const { data, error, isLoading } = useGetCarsCarsGet({}, { refetchInterval: 5000 });
