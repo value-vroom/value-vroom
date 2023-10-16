@@ -8,6 +8,7 @@ import { EditProfileScreen } from '../screens/settings/EditProfile';
 import { OrderBookingScreen } from '../screens/bookings/OrderBooking';
 import { InspectionScreen } from '../screens/bookings/Inspection';
 import { ComplaintScreen } from '../screens/bookings/Complaint';
+import { LoginScreen } from '../screens/settings/Login';
 
 const RootStack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export function RootStackNavigator() {
             <RootStack.Screen name="Manage Car Booking" component={ManageBookingScreen} />
             <RootStack.Screen name="Inspection" component={InspectionScreen} />
             <RootStack.Screen name="Complaint" component={ComplaintScreen} />
+            <RootStack.Screen name="Login" component={LoginScreen} />
         </RootStack.Navigator>
     );
 }

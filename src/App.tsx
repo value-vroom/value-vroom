@@ -6,7 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "./styles";
 
-const queryClient = new QueryClient();
+import './utility/authentication';
+
+export const queryClient = new QueryClient();
 
 function App() {
   const scheme = useColorScheme();
