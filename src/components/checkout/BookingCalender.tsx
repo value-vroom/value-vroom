@@ -41,9 +41,11 @@ function getMarkedDates(day1: Date, day2: Date, color: string, textColor: string
     }
 
     let currentDay = new Date(day1.getTime());
-    let endDay = addDays(day2, 1);
     let markedDates: any = {};
-    while (currentDay < endDay) {
+    while (isWithinInterval(currentDay, {
+        start: day1,
+        end: day2
+    })) {
         markedDates[formattedDate(currentDay)] = { color: color, textColor: textColor };
         currentDay = addDays(currentDay, 1);
     }

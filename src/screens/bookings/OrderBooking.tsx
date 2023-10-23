@@ -5,13 +5,12 @@ import { LocationPicker, LocationType } from "../../components/checkout/Location
 import { CheckoutCarPreview } from "../../components/checkout/CheckoutCarPreview";
 import { DatePicker } from "../../components/checkout/DatePicker";
 import { timeslotToDate } from "../../components/checkout/BookingTimePicker";
-import { intervalToDuration } from "date-fns";
+import { differenceInHours, intervalToDuration } from "date-fns";
 import { useGetAllCars } from '../../api/apiComponents';
 import { Car } from "../../api/apiSchemas";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InvoiceModal } from "../../components/checkout/InvoiceModal";
-import { BookingCalender } from "../../components/checkout/BookingCalender";
 
 export function OrderBookingScreen(
     {
@@ -89,11 +88,11 @@ export function OrderBookingScreen(
         )
     }
 
-    const getPrice = (duration?: Duration, car?: Car) => {
-        if (!duration || !car) {
+    const getPrice = (start?: Date, end?: Date, car?: Car) => {
+        if (!start || !end || !car) {
             return 0;
         }
-        return (duration.days || 0) * 1440 * car.price + (duration.hours || 0) * 60 * car.price + (duration.minutes || 0) * car.price;
+        return Math.abs(differenceInHours(start, end)) * (car.price / 100);
     }
 
     return (
@@ -114,10 +113,10 @@ export function OrderBookingScreen(
                     {(bookedDuration && bookedDuration.hours && bookedDuration.hours > 0) ? <Text className="text-white font-bold text-base">{bookedDuration.hours} hours</Text> : <></>}
                     {(bookedDuration && bookedDuration.minutes && bookedDuration.minutes > 0) ? <Text className="text-white font-bold text-base">{bookedDuration.minutes} minutes</Text> : <></>}
                     <Text className="text-white font-bold text-base"> / </Text>
-                    <Text className="text-white font-bold text-xl">$ {getPrice(bookedDuration, car)}</Text>
+                    <Text className="text-white font-bold text-xl">$ {getPrice(startDate, endDate, car)}</Text>
                 </View>
             </CheckoutDrawer>
-            <InvoiceModal isVisible={isInvoiceModalVisible} setModalVisible={setIsInvoiceModalVisible} />
+            <InvoiceModal bookingStart={startDate} bookingEnd={endDate} car={car} isVisible={isInvoiceModalVisible} setModalVisible={setIsInvoiceModalVisible} />
         </View>
     )
 }
